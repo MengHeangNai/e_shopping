@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "kh.edu.rupp.ite.e_shopping"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "kh.edu.rupp.ite.e_shopping"
@@ -38,6 +38,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -50,7 +51,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.7.2")
