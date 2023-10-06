@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "279839523980",
+    "project_id": "eshopping-17404",
+    "storage_bucket": "eshopping-17404.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279839523980:android:24229a536c3a681a05e7a9",
+        "android_client_info": {
+          "package_name": "kh.edu.rupp.ite.e_shopping"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXfRsAT9LMN4H2ILtBBWij0DWzZ2tDOME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
