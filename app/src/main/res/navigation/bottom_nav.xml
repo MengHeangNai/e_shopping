@@ -5,7 +5,9 @@
             app:startDestination="@id/home">
 
     <fragment android:id="@+id/home" android:name="kh.edu.rupp.ite.e_shopping.ui.fragment.FragmentHome" android:label="fragment_home"
-              tools:layout="@layout/fragment_home"/>
+              tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_home_to_search" app:destination="@id/search"/>
+    </fragment>
     <fragment android:id="@+id/search" android:name="kh.edu.rupp.ite.e_shopping.ui.fragment.FragmentSearch" android:label="fragment_search"
               tools:layout="@layout/fragment_search"/>
     <fragment android:id="@+id/cart" android:name="kh.edu.rupp.ite.e_shopping.ui.fragment.FragmentCart" android:label="fragment_cart"

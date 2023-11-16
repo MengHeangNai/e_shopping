@@ -35,10 +35,9 @@ class MainActivity : AppCompatActivity(){
 
 
     }
-    private fun showFragment(fragment : Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(binding.lytFragment.id, fragment)
-        fragmentTransaction.commit()
-    }
+  private fun showFragment(fragment: Fragment) {
+    supportFragmentManager.beginTransaction()
+        .replace(binding.lytFragment.id, fragment)
+        .commitNow()
+}
 }
