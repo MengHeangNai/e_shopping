@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/bottom_nav"
+            app:startDestination="@id/home">
+
+    <fragment android:id="@+id/home" android:name="kh.edu.rupp.ite.e_shopping.ui.fragment.FragmentHome" android:label="fragment_home"
+              tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_home_to_search" app:destination="@id/search"/>
+    </fragment>
+    <fragment android:id="@+id/search" android:name="kh.edu.rupp.ite.e_shopping.ui.fragment.FragmentSearch" android:label="fragment_search"
+              tools:layout="@layout/fragment_search"/>
+    <fragment android:id="@+id/cart" android:name="kh.edu.rupp.ite.e_shopping.ui.fragment.FragmentCart" android:label="fragment_cart"
+              tools:layout="@layout/fragment_cart"/>
+    <fragment android:id="@+id/profile" android:name="kh.edu.rupp.ite.e_shopping.ui.fragment.FragmentProfile"
+              android:label="fragment_profile" tools:layout="@layout/fragment_profile"/>
+</navigation>
