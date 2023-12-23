@@ -1,3 +1,5 @@
+package kh.edu.rupp.ite.e_shopping.ui.resource
+
 sealed class Resource<T>(
     val data :T?=null,
     val message:String?=null

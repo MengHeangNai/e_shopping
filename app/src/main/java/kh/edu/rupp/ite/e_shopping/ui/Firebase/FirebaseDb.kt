@@ -1,28 +1,8 @@
 package kh.edu.rupp.ite.e_shopping.ui.Firebase
 
-import Address
-import CartProduct
-import Constants.Companion.ADDRESS_COLLECTION
-import Constants.Companion.BEST_DEALS
-import Constants.Companion.CART_COLLECTION
-import Constants.Companion.CATEGORIES_COLLECTION
-import Constants.Companion.CATEGORY
-import Constants.Companion.CLOTHES
-import Constants.Companion.COLOR
-import Constants.Companion.CUPBOARD_CATEGORY
-import Constants.Companion.ID
-import Constants.Companion.ORDERS
-import Constants.Companion.PRICE
-import Constants.Companion.PRODUCTS_COLLECTION
-import Constants.Companion.QUANTITY
-import Constants.Companion.SIZE
-import Constants.Companion.STORES_COLLECTION
-import Constants.Companion.TITLE
-import Constants.Companion.USERS_COLLECTION
-import Order
-import User
 import android.util.Log
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.Query
@@ -32,6 +12,27 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
+import kh.edu.rupp.ite.e_shopping.api.model.Address
+import kh.edu.rupp.ite.e_shopping.api.model.CartProduct
+import kh.edu.rupp.ite.e_shopping.api.model.Order
+import kh.edu.rupp.ite.e_shopping.api.model.User
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ADDRESS_COLLECTION
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.BEST_DEALS
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CART_COLLECTION
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CATEGORIES_COLLECTION
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CATEGORY
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CLOTHES
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.COLOR
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CUPBOARD_CATEGORY
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ID
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ORDERS
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.PRICE
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.PRODUCTS_COLLECTION
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.QUANTITY
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.SIZE
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.STORES_COLLECTION
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.TITLE
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.USERS_COLLECTION
 
 
 class FirebaseDb {
@@ -269,5 +270,23 @@ class FirebaseDb {
                 }
             }
     }
+
+
+    fun checkUserByEmail(email: String, onResult: (String?, Boolean?) -> Unit) {
+        usersCollectionRef.whereEqualTo("email", email).get()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val user = it.result.toObjects(User::class.java)
+                    if (user.isEmpty())
+                        onResult(null, false)
+                    else
+                        onResult(null, true)
+                } else
+                    onResult(it.exception.toString(), null)
+            }
+    }
+    fun signInWithGoogle(credential: AuthCredential) =
+        FirebaseAuth.getInstance().signInWithCredential(credential)
+    fun logout() = Firebase.auth.signOut()
 }
 

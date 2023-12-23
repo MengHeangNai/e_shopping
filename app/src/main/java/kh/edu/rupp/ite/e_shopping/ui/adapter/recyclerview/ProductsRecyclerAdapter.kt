@@ -1,6 +1,5 @@
 package kh.edu.rupp.ite.e_shopping.ui.adapter.recyclerview
 
-import Constants.Companion.IMAGES
 import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kh.edu.rupp.ite.e_shopping.api.model.Product
 import kh.edu.rupp.ite.e_shopping.databinding.ProductItemBinding
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.IMAGES
 
 class ProductsRecyclerAdapter() :
     RecyclerView.Adapter<ProductsRecyclerAdapter.BestProductsRecyclerAdapterViewHolder>() {

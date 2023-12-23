@@ -1,3 +1,4 @@
+package kh.edu.rupp.ite.e_shopping.ui.util
 class Constants {
 
     companion object {

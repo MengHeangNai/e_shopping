@@ -1,6 +1,5 @@
 package kh.edu.rupp.ite.e_shopping.ui.adapter.recyclerview
 
-import Constants.Companion.IMAGES
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -9,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kh.edu.rupp.ite.e_shopping.api.model.Product
 import kh.edu.rupp.ite.e_shopping.databinding.ClothesExtraAdsItemBinding
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.IMAGES
 
 
 class AdsRecyclerAdapter : RecyclerView.Adapter<AdsRecyclerAdapter.AdsViewHolder>() {
