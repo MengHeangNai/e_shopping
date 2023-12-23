@@ -8,8 +8,6 @@
     android:overScrollMode="never"
     android:id="@+id/scroll_cupboard">
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
