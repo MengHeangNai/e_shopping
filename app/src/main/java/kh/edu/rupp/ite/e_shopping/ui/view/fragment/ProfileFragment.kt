@@ -17,10 +17,23 @@ class ProfileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        onHomeClick()
+    }
+
+    private fun onHomeClick() {
+        val btm = activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        btm?.menu?.getItem(0)?.setOnMenuItemClickListener {
+            activity?.onBackPressed()
+            true
+        }
+    }
     override fun onResume() {
         super.onResume()
-
-        val bottomNavigation = activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation?.visibility = View.VISIBLE
+        val bottomNavigation =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.visibility = View.VISIBLE
     }
 }

@@ -5,7 +5,6 @@ import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 import java.util.*
 
-
 @Parcelize
 data class Product(
     val id :Int,
