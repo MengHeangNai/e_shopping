@@ -1,26 +1,169 @@
 package kh.edu.rupp.ite.e_shopping.ui.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import kh.edu.rupp.ite.e_shopping.R
+import kh.edu.rupp.ite.e_shopping.api.model.User
+import kh.edu.rupp.ite.e_shopping.databinding.FragmentProfileBinding
+import kh.edu.rupp.ite.e_shopping.ui.resource.Resource
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.UPDATE_ADDRESS_FLAG
+import kh.edu.rupp.ite.e_shopping.ui.view.activity.MainActivity
+import kh.edu.rupp.ite.e_shopping.ui.view.activity.ShoppingActivity
+import kh.edu.rupp.ite.e_shopping.ui.viewmodel.shopping.ShoppingViewModel
 
 class ProfileFragment : Fragment() {
-    override fun onCreateView(
+    val TAG = "ProfileFragment"
+
+    private lateinit var binding: FragmentProfileBinding
+    private lateinit var viewModel: ShoppingViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel = (activity as ShoppingActivity).viewModel
+        viewModel.getUser()
+    }
+
+    override fun onCreateView (
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         onHomeClick()
+        onLogoutClick()
+        onBillingAndAddressesClick()
+        onProfileClick()
+        onAllOrderClick()
+        onTrackOrderClick()
+        onLanguageClick()
+//        onHelpClick()
+
+        observeProfile()
+        binding.tvVersionCode.text =
+            "${resources.getText(R.string.g_version)} 1.0.0"
+
+    }
+
+//    private fun onHelpClick() {
+//        binding.linearHelp.setOnClickListener {
+//            findNavController().navigate(R.id.action_profileFragment_to_helpFragment)
+//        }
+//    }
+
+    private fun onLanguageClick() {
+        binding.linearLanguage.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_languageFragment)
+        }
+    }
+
+    private fun onTrackOrderClick() {
+        binding.linearTrackOrder.setOnClickListener {
+            val snackBar = requireActivity().findViewById<CoordinatorLayout>(R.id.snackBar_coordinator)
+            Snackbar.make(snackBar,resources.getText(R.string.g_coming_soon), Snackbar.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun onAllOrderClick() {
+        binding.allOrders.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_allOrderFragment)
+        }
+    }
+
+    private fun onProfileClick() {
+        binding.constraintProfile.setOnClickListener {
+            user?.let {
+                val bundle = Bundle()
+                bundle.putParcelable("user",user)
+                findNavController().navigate(R.id.action_profileFragment_to_editUserInformation,bundle)
+            }
+        }
+
+
+    }
+
+    var user: User?=null
+    private fun observeProfile() {
+        viewModel.profile.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is Resource.Loading -> {
+                    showLoading()
+                    return@observe
+                }
+
+                is Resource.Success -> {
+                    hideLoading()
+                    val user = response.data
+                    this.user = user
+                    binding.apply {
+                        tvUserName.text = user?.firstName + " " + user?.lastName
+                        Glide.with(requireView()).load(user?.imagePath)
+                            .error(R.drawable.ic_default_profile_picture).into(binding.imgUser)
+                    }
+                    return@observe
+                }
+
+                is Resource.Error -> {
+                    hideLoading()
+                    Toast.makeText(
+                        activity,
+                        resources.getText(R.string.error_occurred),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.e(TAG, response.message.toString())
+                    return@observe
+                }
+            }
+        }
+    }
+
+    private fun hideLoading() {
+        binding.apply {
+            binding.progressbarSettings.visibility = View.GONE
+            constraintParnet.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showLoading() {
+        binding.apply {
+            binding.progressbarSettings.visibility = View.VISIBLE
+            constraintParnet.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun onBillingAndAddressesClick() {
+        binding.linearBilling.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("clickFlag", UPDATE_ADDRESS_FLAG)
+            findNavController().navigate(R.id.action_profileFragment_to_billingFragment, bundle)
+        }
+    }
+
+    private fun onLogoutClick() {
+
+        binding.linearOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(context, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 
     private fun onHomeClick() {
@@ -30,10 +173,12 @@ class ProfileFragment : Fragment() {
             true
         }
     }
+
     override fun onResume() {
         super.onResume()
-        val bottomNavigation =
-            requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation.visibility = View.VISIBLE
+        val bottomNavigation = activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation?.visibility = View.VISIBLE
     }
+
+
 }

@@ -20,6 +20,16 @@
     </fragment>
 
     <fragment
+        android:id="@+id/editUserInformation"
+        android:name="kh.edu.rupp.ite.e_shopping.ui.view.settings.EditUserInformationFragment"
+        android:label="fragment_edit_user_information"
+        tools:layout="@layout/fragment_edit_user_information">
+        <argument
+            android:name="user"
+            app:argType="kh.edu.rupp.ite.e_shopping.api.model.User" />
+    </fragment>
+
+    <fragment
             android:id="@+id/productPreviewFragment2"
             android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.shopping.ProductPreviewFragment"
             android:label="fragment_product_preview"
@@ -44,7 +54,8 @@
                 app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim"
                 app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
-<!--        <action-->
+        <action android:id="@+id/action_cartFragment_to_billingFragment" app:destination="@id/billingFragment"/>
+        <!--        <action-->
 <!--                android:id="@+id/action_cartFragment_to_billingFragment"-->
 <!--                app:destination="@id/billingFragment" />-->
     </fragment>
@@ -61,5 +72,32 @@
             android:id="@+id/profileFragment"
             android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.ProfileFragment"
             android:label="ProfileFragment">
+        <action android:id="@+id/action_profileFragment_to_editUserInformation"
+                app:destination="@id/editUserInformation"/>
+        <action android:id="@+id/action_profileFragment_to_allOrderFragment" app:destination="@id/allOrderFragment"/>
+        <action android:id="@+id/action_profileFragment_to_languageFragment" app:destination="@id/languageFragment"/>
+        <action android:id="@+id/action_profileFragment_to_billingFragment" app:destination="@id/billingFragment"/>
+    </fragment>
+    <fragment android:id="@+id/allOrderFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.settings.AllOrderFragment"
+              android:label="fragment_all_order" tools:layout="@layout/fragment_all_order"/>
+    <fragment android:id="@+id/languageFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.settings.LanguageFragment"
+              android:label="fragment_language" tools:layout="@layout/fragment_language"/>
+    <fragment android:id="@+id/billingFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.shopping.BillingFragment"
+              android:label="fragment_billing" tools:layout="@layout/fragment_billing">
+
+        <argument
+            android:name="clickFlag"
+            app:argType="string" />
+        <argument
+            android:name="price"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="products"
+            android:defaultValue="@null"
+            app:argType="kh.edu.rupp.ite.e_shopping.api.model.CartProductsList"
+            app:nullable="true" />
+
     </fragment>
 </navigation>

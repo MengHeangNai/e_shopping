@@ -70,7 +70,7 @@ class CartFragment : Fragment() {
             bundle.putString("price", binding.tvTotalprice.text.toString())
             bundle.putString("clickFlag", SELECT_ADDRESS_FLAG)
             bundle.putParcelable("products", cartProducts)
-//            findNavController().navigate(R.id.action_cartFragment_to_billingFragment, bundle)
+            findNavController().navigate(R.id.action_cartFragment_to_billingFragment, bundle)
         }
     }
 

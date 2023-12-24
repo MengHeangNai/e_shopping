@@ -26,6 +26,7 @@ import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.COLOR
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CUPBOARD_CATEGORY
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ID
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ORDERS
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ORDER_PLACED_STATE
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.PRICE
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.PRODUCTS_COLLECTION
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.QUANTITY
@@ -33,6 +34,7 @@ import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.SIZE
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.STORES_COLLECTION
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.TITLE
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.USERS_COLLECTION
+import java.util.*
 
 
 class FirebaseDb {
@@ -288,5 +290,100 @@ class FirebaseDb {
     fun signInWithGoogle(credential: AuthCredential) =
         FirebaseAuth.getInstance().signInWithCredential(credential)
     fun logout() = Firebase.auth.signOut()
+
+
+    fun placeOrder(products: List<CartProduct>, address: Address, order: Order) =
+        Firebase.firestore.runBatch { batch ->
+            //filter every product to its store
+            /**
+             * create a map of products that has the size of stores list,
+            the map has stores name as keys
+             */
+
+            val stores = ArrayList<String>()
+            products.forEach { cartProduct ->
+                if (!stores.contains(cartProduct.store)) {
+                    stores.add(cartProduct.store)
+                }
+            }
+
+            val productsMap = HashMap<String, ArrayList<CartProduct>>(stores.size)
+            stores.forEach { storeName ->
+                val tempList = ArrayList<CartProduct>()
+                products.forEach { cartProduct ->
+                    if (cartProduct.store == storeName)
+                        tempList.add(cartProduct)
+                    productsMap[storeName] = tempList
+                }
+            }
+
+
+            /**
+            // Adding order,address and products to each store
+             */
+            productsMap.forEach {
+                val store = it.key
+                val orderProducts = it.value
+                val orderNum = order.id
+                var price = 0
+
+                orderProducts.forEach { it2 ->
+                    if (it2.newPrice != null && it2.newPrice.isNotEmpty()) {
+                        price += it2.newPrice.toInt() * it2.quantity
+                    } else
+                        price += it2.price.toInt() * it2.quantity
+                }
+
+                Log.d("test", "$store $price")
+
+                val storeOrder = Order(
+                    orderNum.toString(),
+                    Calendar.getInstance().time,
+                    price.toString(),
+                    ORDER_PLACED_STATE
+                )
+
+                val storeDocument = storesCollection
+                    .document(store)
+                    .collection("orders")
+                    .document()
+
+                batch.set(storeDocument, storeOrder)
+
+                val storeOrderAddress = storeDocument.collection(ADDRESS_COLLECTION).document()
+                batch.set(storeOrderAddress, address)
+
+
+                orderProducts.forEach {
+                    val storeOrderProducts =
+                        storeDocument.collection(PRODUCTS_COLLECTION).document()
+                    batch.set(storeOrderProducts, it)
+                }
+
+
+            }
+
+            /**
+            // Adding order,address and products to the user
+             */
+            val userOrderDocument =
+                usersCollectionRef.document(FirebaseAuth.getInstance().currentUser!!.uid)
+                    .collection("orders").document()
+            batch.set(userOrderDocument, order)
+
+            products.forEach {
+                val userProductDocument =
+                    userOrderDocument.collection(PRODUCTS_COLLECTION).document()
+                batch.set(userProductDocument, it)
+            }
+
+            val userAddressDocument = userOrderDocument.collection(ADDRESS_COLLECTION).document()
+
+            batch.set(userAddressDocument, address)
+
+        }.also {
+            deleteCartItems()
+        }
+
 }
 
