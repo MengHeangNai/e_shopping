@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kh.edu.rupp.ite.e_shopping.R
+import androidx.navigation.fragment.findNavController
+import kh.edu.rupp.ite.e_shopping.databinding.FragmentLanguageBinding
 
 
 class LanguageFragment : Fragment() {
+
+    private lateinit var binding: FragmentLanguageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -17,8 +20,22 @@ class LanguageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_language, container, false)
+        binding = FragmentLanguageBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        onCloseImageClick()
+    }
+
+    private fun onCloseImageClick() {
+        binding.imgCloseLanguage.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+
+
 
 }

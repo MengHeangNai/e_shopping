@@ -101,8 +101,8 @@
 
         <ImageView
             android:id="@+id/img_add_address"
-            android:layout_width="@dimen/_15sdp"
-            android:layout_height="@dimen/_15sdp"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintTop_toTopOf="@id/tv_shopping_addresses"
             app:layout_constraintBottom_toBottomOf="@id/tv_shopping_addresses"

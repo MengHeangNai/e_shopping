@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import kh.edu.rupp.ite.e_shopping.R
 import kh.edu.rupp.ite.e_shopping.databinding.FragmentHomeBinding
@@ -41,14 +39,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.frameScan.setOnClickListener{
-            val snackBar = requireActivity().findViewById<CoordinatorLayout>(R.id.snackBar_coordinator)
-            Snackbar.make(snackBar,resources.getText(R.string.coming_soon), Snackbar.LENGTH_SHORT).show()
-        }
-        binding.fragmeMicrohpone.setOnClickListener {
-            val snackBar = requireActivity().findViewById<CoordinatorLayout>(R.id.snackBar_coordinator)
-            Snackbar.make(snackBar,resources.getText(R.string.coming_soon),Snackbar.LENGTH_SHORT).show()
-        }
+//        binding.frameScan.setOnClickListener{
+//            val snackBar = requireActivity().findViewById<CoordinatorLayout>(R.id.snackBar_coordinator)
+//            Snackbar.make(snackBar,resources.getText(R.string.coming_soon), Snackbar.LENGTH_SHORT).show()
+//        }
+//        binding.fragmeMicrohpone.setOnClickListener {
+//            val snackBar = requireActivity().findViewById<CoordinatorLayout>(R.id.snackBar_coordinator)
+//            Snackbar.make(snackBar,resources.getText(R.string.coming_soon),Snackbar.LENGTH_SHORT).show()
+//        }
 
         val categoriesFragments = arrayListOf<Fragment>(
             HomeProductsFragment(),

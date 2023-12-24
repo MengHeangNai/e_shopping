@@ -55,6 +55,8 @@ android {
 }
 
 dependencies {
+    implementation ("com.github.shuhart:stepview:1.5.1")
+
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.6")

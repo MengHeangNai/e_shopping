@@ -65,6 +65,9 @@
             android:id="@+id/searchFragment"
             android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.SearchFragment"
             android:label="SearchFragment">
+        <action android:id="@+id/action_searchFragment_to_productPreviewFragment2"
+                app:destination="@id/productPreviewFragment2"/>
+        <action android:id="@+id/action_searchFragment_to_homeFragment" app:destination="@id/homeFragment"/>
     </fragment>
 
     <fragment
@@ -79,7 +82,10 @@
         <action android:id="@+id/action_profileFragment_to_billingFragment" app:destination="@id/billingFragment"/>
     </fragment>
     <fragment android:id="@+id/allOrderFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.settings.AllOrderFragment"
-              android:label="fragment_all_order" tools:layout="@layout/fragment_all_order"/>
+              android:label="fragment_all_order" tools:layout="@layout/fragment_all_order">
+        <action android:id="@+id/action_allOrderFragment_to_orderDetailsFragment"
+                app:destination="@id/orderDetailsFragment"/>
+    </fragment>
     <fragment android:id="@+id/languageFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.settings.LanguageFragment"
               android:label="fragment_language" tools:layout="@layout/fragment_language"/>
     <fragment android:id="@+id/billingFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.shopping.BillingFragment"
@@ -98,6 +104,41 @@
             android:defaultValue="@null"
             app:argType="kh.edu.rupp.ite.e_shopping.api.model.CartProductsList"
             app:nullable="true" />
+        <action android:id="@+id/action_billingFragment_to_addressFragment" app:destination="@id/addressFragment"/>
+        <action android:id="@+id/action_billingFragment_to_orderCompleteFragment"
+                app:destination="@id/orderCompleteFragment"/>
 
+    </fragment>
+    <fragment android:id="@+id/addressFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.shopping.AddressFragment"
+              android:label="fragment_address" tools:layout="@layout/fragment_address">
+        <argument
+            android:name="address"
+            android:defaultValue="@null"
+            app:argType="kh.edu.rupp.ite.e_shopping.api.model.Address"
+            app:nullable="true" />
+    </fragment>
+    <fragment android:id="@+id/orderCompleteFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.shopping.OrderCompleteFragment"
+              android:label="fragment_order_complete" tools:layout="@layout/fragment_order_complete">
+        <argument
+            android:name="order_completion_flag"
+            app:argType="string" />
+        <argument
+            android:name="orderNumber"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="order"
+            app:argType="kh.edu.rupp.ite.e_shopping.api.model.Order"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action android:id="@+id/action_orderCompleteFragment_to_orderDetailsFragment"
+                app:destination="@id/orderDetailsFragment"/>
+    </fragment>
+    <fragment android:id="@+id/orderDetailsFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.shopping.OrderDetailsFragment"
+              android:label="fragment_order_details" tools:layout="@layout/fragment_order_details">
+        <argument
+            android:name="order"
+            app:argType="kh.edu.rupp.ite.e_shopping.api.model.Order" />
     </fragment>
 </navigation>
