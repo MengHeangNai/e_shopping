@@ -21,13 +21,10 @@ class Constants {
         const val SIZE = "size"
         const val QUANTITY = "quantity"
 
-
-        const val CHAIR_CATEGORY = "Chair"
-        const val CUPBOARD_CATEGORY = "Cupboard"
-        const val TABLES_CATEGORY = "Table"
-        const val ACCESSORY_CATEGORY = "Accessory"
-        const val FURNITURE_CATEGORY = "Furniture"
-
+        const val CLOTHES_CATEGORY = "Clothes"
+        const val CUPBOARD_CATEGORY = "Pants"
+        const val TABLES_CATEGORY = "Shirts"
+        const val ACCESSORY_CATEGORY = "Accessories"
 
         const val ORDERS = "orders"
         const val CLOTHES = "Clothes"

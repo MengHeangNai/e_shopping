@@ -1,0 +1,65 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/homeFragment">
+
+    <fragment
+            tools:layout="@layout/fragment_home"
+            android:id="@+id/homeFragment"
+            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.HomeFragment"
+            android:label="HomeFragment">
+
+<action
+                android:id="@+id/action_homeFragment_to_productPreviewFragment2"
+                app:destination="@id/productPreviewFragment2"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action android:id="@+id/action_homeFragment_to_searchFragment" app:destination="@id/searchFragment"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/productPreviewFragment2"
+            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.shopping.ProductPreviewFragment"
+            android:label="fragment_product_preview"
+            tools:layout="@layout/fragment_product_preview">
+        <argument
+                android:name="product"
+                app:argType="kh.edu.rupp.ite.e_shopping.api.model.Product" />
+
+
+    </fragment>
+
+    <fragment
+            tools:layout="@layout/fragment_cart"
+            android:id="@+id/cartFragment"
+            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.CartFragment"
+            android:label="CartFragment">
+        <action
+                android:id="@+id/action_cartFragment_to_productPreviewFragment2"
+                app:destination="@id/productPreviewFragment2"
+                app:popUpToInclusive="false"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+<!--        <action-->
+<!--                android:id="@+id/action_cartFragment_to_billingFragment"-->
+<!--                app:destination="@id/billingFragment" />-->
+    </fragment>
+
+    <fragment
+            tools:layout="@layout/fragment_search"
+            android:id="@+id/searchFragment"
+            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.SearchFragment"
+            android:label="SearchFragment">
+    </fragment>
+
+    <fragment
+            tools:layout="@layout/fragment_profile"
+            android:id="@+id/profileFragment"
+            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.ProfileFragment"
+            android:label="ProfileFragment">
+    </fragment>
+</navigation>

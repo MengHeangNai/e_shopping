@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import kh.edu.rupp.ite.e_shopping.R
@@ -73,18 +75,17 @@ class HomeFragment : Fragment() {
 
         }.attach()
 
-//        binding.tvSearch.setOnClickListener {
-//            findNavController().navigate(R.id.action_home_to_search) }
+        binding.tvSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
 
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//
-//        val bottomNavigation =
-//            requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
-//        bottomNavigation.visibility = View.VISIBLE
-//    }
+    override fun onResume() {
+        super.onResume()
+        val bottomNavigation =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.visibility = View.VISIBLE
+    }
 
     override fun onDestroy() {
         super.onDestroy()

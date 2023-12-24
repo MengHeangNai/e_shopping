@@ -47,8 +47,7 @@ class ProductsRecyclerAdapter() :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: BestProductsRecyclerAdapterViewHolder, position: Int) {
         val product = differ.currentList[position]
-        val images = product.images
-        val image = (images!![IMAGES] as List<*>)[0]
+        val image = (product.images?.get(IMAGES) as List<String>)[0]
         holder.binding.apply {
             Glide.with(holder.itemView).load(image).into(imgProduct)
             tvName.text = product.title

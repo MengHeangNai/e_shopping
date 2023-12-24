@@ -2,6 +2,8 @@
 package kh.edu.rupp.ite.e_shopping.ui.view.activity
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -22,55 +24,17 @@ class ShoppingActivity : AppCompatActivity() {
         ViewModelProvider(this, providerFactory)[ShoppingViewModel::class.java]
     }
 
-//    private lateinit var cartViewModel: CartViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping)
-
-
-
-//        cartViewModel = CartViewModel()
-//        supportActionBar!!.hide()
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val navController = Navigation.findNavController(this, R.id.host_fragment)
         NavigationUI.setupWithNavController(bottomNavigation, navController)
 
-//        observeCartProductsCount(bottomNavigation)
+        bottomNavigation.setOnClickListener(){
+            Log.d(TAG, "onCreate: ")
+            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show()
+        }
     }
-
-
-    private fun observeCartProductsCount(bottomNavigation: BottomNavigationView) {
-
-//        cartViewModel.cartItemsCount.observe(this, Observer { response ->
-//            when (response) {
-//                is Resource.Loading -> {
-//                    return@Observer
-//                }
-//
-//                is Resource.Success -> {
-//                    if (response.data != 0)
-//                        bottomNavigation.getOrCreateBadge(R.id.cart).apply {
-//                            backgroundColor = resources.getColor(R.color.g_dark_blue)
-//                            number = response.data!!
-//                        }
-//                    else {
-//                        bottomNavigation.getOrCreateBadge(R.id.cart).apply {
-//                            backgroundColor = resources.getColor(R.color.g_white)
-//                            number = response.data
-//                        }
-//                    }
-//                    return@Observer
-//                }
-//
-//                is Resource.Error -> {
-//                    Log.e(TAG, response.message.toString())
-//                    Toast.makeText(this, "Oops error occurred", Toast.LENGTH_SHORT).show()
-//                    return@Observer
-//                }
-//            }
-//        })
-    }
-
-
 }
