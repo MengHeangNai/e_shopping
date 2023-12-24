@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="200dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/bg_delete_frame">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/order"
+            android:textColor="@color/g_black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/ask_order"
+            android:textColor="@color/g_black"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="400px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/g_blue"
+                android:text="@string/no"
+                android:textColor="@color/g_white"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="400px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_primary_btn"
+                android:text="@string/yes"
+                android:textColor="@color/white"
+                android:elevation="10dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:text="@string/order"
+        android:id="@+id/checkoutButton"
+        android:background="@color/g_hint"
+        android:textColor="@color/white"
+        android:layout_gravity="center"/>
+</LinearLayout>

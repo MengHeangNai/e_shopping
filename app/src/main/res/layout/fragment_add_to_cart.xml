@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="12dp">
 
-                    <FrameLayout
+                <FrameLayout
                         android:layout_width="30dp"   
                     android:layout_height="30dp"  
                     android:background="@drawable/circle_shape">
