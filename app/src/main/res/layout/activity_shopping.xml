@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.ShoppingActivity">
+    tools:context=".ui.view.activity.ShoppingActivity">
 
     <fragment
         android:id="@+id/host_fragment"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/bottom_nav"
+        app:navGraph="@navigation/shopping_nav_graph"
         android:name="androidx.navigation.fragment.NavHostFragment"
         />
 

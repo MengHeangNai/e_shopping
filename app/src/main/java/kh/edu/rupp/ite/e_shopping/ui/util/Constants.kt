@@ -1,4 +1,4 @@
-
+package kh.edu.rupp.ite.e_shopping.ui.util
 class Constants {
 
     companion object {
@@ -10,6 +10,7 @@ class Constants {
         const val PRODUCTS_COLLECTION = "products"
         const val CATEGORIES_COLLECTION = "categories"
         const val CART_COLLECTION = "cart"
+        const val STORES_COLLECTION = "stores"
 
 
         const val PRICE = "price"
@@ -20,13 +21,10 @@ class Constants {
         const val SIZE = "size"
         const val QUANTITY = "quantity"
 
-
-        const val CHAIR_CATEGORY = "Chair"
-        const val CUPBOARD_CATEGORY = "Cupboard"
-        const val TABLES_CATEGORY = "Table"
-        const val ACCESSORY_CATEGORY = "Accessory"
-        const val FURNITURE_CATEGORY = "Furniture"
-
+        const val CLOTHES_CATEGORY = "Clothes"
+        const val CUPBOARD_CATEGORY = "Pants"
+        const val TABLES_CATEGORY = "Shirts"
+        const val ACCESSORY_CATEGORY = "Accessories"
 
         const val ORDERS = "orders"
         const val CLOTHES = "Clothes"
@@ -51,7 +49,6 @@ class Constants {
         const val CART_FLAG = "from_cart_clicl"
         const val UPDATE_ADDRESS_FLAG = "update"
         const val SELECT_ADDRESS_FLAG = "select"
-        const val STORES_COLLECTION = "stores"
 
         const val ORDER_FAILED_FLAG = "order_failed"
         const val ORDER_SUCCESS_FLAG = "order_success"

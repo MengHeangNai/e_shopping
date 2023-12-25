@@ -12,7 +12,20 @@
           "package_name": "kh.edu.rupp.ite.e_shopping"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "279839523980-hn5qnbd1kskc6mfe590814n7408fjcvo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kh.edu.rupp.ite.e_shopping",
+            "certificate_hash": "e73998fa79ee37410dd433a9dc2aa09bd4fd9543"
+          }
+        },
+        {
+          "client_id": "279839523980-1lpbrhktq3imkns5d51tna4hjdgk5ges.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBXfRsAT9LMN4H2ILtBBWij0DWzZ2tDOME"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279839523980-1lpbrhktq3imkns5d51tna4hjdgk5ges.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
