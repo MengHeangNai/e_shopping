@@ -11,7 +11,7 @@ on:
   push:
     branches: [ "heang" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "heang" ]
 
 permissions:
   contents: read
@@ -33,11 +33,11 @@ jobs:
     - name: Change wrapper permissions
       run: chmod +x ./gradlew
 
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Build release with Gradle
+      run: ./gradlew assembleRelease
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.0.0
       with: 
         name: E-Shopping.apk
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: app/build/outputs/apk/release/app-release.apk
