@@ -43,10 +43,7 @@ jobs:
         
     - name: Download a Build Artifact
       uses: actions/download-artifact@v4.1.0
-
-    - name: First interaction
-      uses: actions/first-interaction@v1.3.0
-        
+      
     - name: Change wrapper permissions
       run: chmod +x ./gradlew
       
