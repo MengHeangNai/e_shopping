@@ -22,8 +22,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kh.edu.rupp.ite.e_shopping.R
-import kh.edu.rupp.ite.e_shopping.api.model.User
 import kh.edu.rupp.ite.e_shopping.databinding.FragmentEditUserInformationBinding
+import kh.edu.rupp.ite.e_shopping.ui.model.User
 import kh.edu.rupp.ite.e_shopping.ui.resource.Resource
 import kh.edu.rupp.ite.e_shopping.ui.view.activity.ShoppingActivity
 import kh.edu.rupp.ite.e_shopping.ui.viewmodel.shopping.ShoppingViewModel
@@ -257,7 +257,7 @@ class EditUserInformationFragment : Fragment() {
 
         binding.apply {
             Glide.with(requireView()).load(user.imagePath)
-                .error(R.drawable.ic_default_profile_picture).into(imgUser)
+                .error(R.drawable.boy).into(imgUser)
 
             edFirstName.setText(user.firstName)
             edLastName.setText(user.lastName)

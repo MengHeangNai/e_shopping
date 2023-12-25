@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import kh.edu.rupp.ite.e_shopping.api.model.Product
+import kh.edu.rupp.ite.e_shopping.ui.model.Product
 import kh.edu.rupp.ite.e_shopping.databinding.RecyclerviewSearchItemBinding
 
 class SearchRecyclerAdapter : RecyclerView.Adapter<SearchRecyclerAdapter.SearchViewHolder>() {

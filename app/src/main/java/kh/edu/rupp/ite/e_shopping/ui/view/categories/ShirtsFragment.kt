@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -30,7 +29,7 @@ class ShirtsFragment : Fragment() {
         productsAdapter = ProductsRecyclerAdapter()
         viewModel = (activity as ShoppingActivity).viewModel
 
-        viewModel.getCupboardProduct()
+        viewModel.getshirts()
     }
 
     override fun onCreateView(
@@ -49,7 +48,6 @@ class ShirtsFragment : Fragment() {
         setupProductsRecyclerView()
         observeProducts()
 
-        productsPaging()
 
         productsAdapter.onItemClick = { product ->
             val bundle = Bundle()
@@ -61,16 +59,8 @@ class ShirtsFragment : Fragment() {
         }
 
     }
-
-    private fun productsPaging() {
-        binding.scrollCupboard.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            if (v!!.getChildAt(0).bottom <= (v.height + scrollY)) {
-                viewModel.getAccessories(productsAdapter.differ.currentList.size)
-            }
-        })
-    }
     private fun observeProducts() {
-        viewModel.tables.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.shirts.observe(viewLifecycleOwner, Observer { response ->
 
             when (response) {
                 is Resource.Loading -> {
@@ -107,15 +97,4 @@ class ShirtsFragment : Fragment() {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
         }
     }
-
-
-    private fun hideTopLoading() {
-        binding.progressbar1.visibility = View.GONE
-    }
-
-    private fun showTopLoading() {
-        binding.progressbar1.visibility = View.VISIBLE
-    }
-
-
 }

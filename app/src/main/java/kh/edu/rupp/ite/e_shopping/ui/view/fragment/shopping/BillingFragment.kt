@@ -17,7 +17,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kh.edu.rupp.ite.e_shopping.R
-import kh.edu.rupp.ite.e_shopping.api.model.Address
+import kh.edu.rupp.ite.e_shopping.ui.model.Address
 import kh.edu.rupp.ite.e_shopping.databinding.FragmentBillingBinding
 import kh.edu.rupp.ite.e_shopping.ui.SpacingDecorator.HorizantalSpacingItemDecorator
 import kh.edu.rupp.ite.e_shopping.ui.adapter.recyclerview.BillingProductsAdapter

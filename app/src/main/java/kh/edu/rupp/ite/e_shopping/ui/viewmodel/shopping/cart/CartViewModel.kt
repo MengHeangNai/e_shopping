@@ -2,8 +2,8 @@ package kh.edu.rupp.ite.e_shopping.ui.viewmodel.shopping.cart
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kh.edu.rupp.ite.e_shopping.api.model.CartProduct
-import kh.edu.rupp.ite.e_shopping.api.model.Product
+import kh.edu.rupp.ite.e_shopping.ui.model.CartProduct
+import kh.edu.rupp.ite.e_shopping.ui.model.Product
 import kh.edu.rupp.ite.e_shopping.ui.Firebase.FirebaseDb
 import kh.edu.rupp.ite.e_shopping.ui.resource.Resource
 

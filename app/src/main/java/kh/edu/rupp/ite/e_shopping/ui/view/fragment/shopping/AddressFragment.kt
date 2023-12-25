@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kh.edu.rupp.ite.e_shopping.R
-import kh.edu.rupp.ite.e_shopping.api.model.Address
+import kh.edu.rupp.ite.e_shopping.ui.model.Address
 import kh.edu.rupp.ite.e_shopping.databinding.FragmentAddressBinding
 import kh.edu.rupp.ite.e_shopping.ui.resource.Resource
 import kh.edu.rupp.ite.e_shopping.ui.view.activity.ShoppingActivity

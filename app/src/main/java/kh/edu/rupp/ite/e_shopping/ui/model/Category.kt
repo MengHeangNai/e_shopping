@@ -1,4 +1,4 @@
-package kh.edu.rupp.ite.e_shopping.api.model
+package kh.edu.rupp.ite.e_shopping.ui.model
 
 data class Category(
     val name:String,

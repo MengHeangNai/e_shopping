@@ -1,4 +1,4 @@
-package kh.edu.rupp.ite.e_shopping.ui.view.fragment
+package kh.edu.rupp.ite.e_shopping.ui.view.fragment.home
 
 import HomeViewpagerAdapter
 import android.os.Bundle
@@ -39,18 +39,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-//        binding.frameScan.setOnClickListener{
-//            val snackBar = requireActivity().findViewById<CoordinatorLayout>(R.id.snackBar_coordinator)
-//            Snackbar.make(snackBar,resources.getText(R.string.coming_soon), Snackbar.LENGTH_SHORT).show()
-//        }
-//        binding.fragmeMicrohpone.setOnClickListener {
-//            val snackBar = requireActivity().findViewById<CoordinatorLayout>(R.id.snackBar_coordinator)
-//            Snackbar.make(snackBar,resources.getText(R.string.coming_soon),Snackbar.LENGTH_SHORT).show()
-//        }
-
         val categoriesFragments = arrayListOf<Fragment>(
             HomeProductsFragment(),
-           ClothesFragment(),
+            ClothesFragment(),
             PantsFragment(),
             ShirtsFragment(),
             AccessoryFragment(),
@@ -61,14 +52,14 @@ class HomeFragment : Fragment() {
         val viewPager2Adapter =
             HomeViewpagerAdapter(categoriesFragments, childFragmentManager, lifecycle)
         binding.viewpagerHome.adapter = viewPager2Adapter
-        TabLayoutMediator(binding.tabLayout,binding.viewpagerHome){tab,position->
+        TabLayoutMediator(binding.tabLayout, binding.viewpagerHome) { tab, position ->
 
-            when(position){
+            when (position) {
                 0 -> tab.text = "Home"
-                1-> tab.text = "Clothes"
-                2-> tab.text = "Pants"
-                3-> tab.text = "Shirts"
-                4-> tab.text = "Accessory"
+                1 -> tab.text = "Clothes"
+                2 -> tab.text = "Pants"
+                3 -> tab.text = "Shirts"
+                4 -> tab.text = "Accessory"
             }
 
         }.attach()

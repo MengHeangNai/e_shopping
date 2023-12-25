@@ -6,7 +6,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kh.edu.rupp.ite.e_shopping.api.model.User
+import kh.edu.rupp.ite.e_shopping.ui.model.User
 import kh.edu.rupp.ite.e_shopping.ui.Firebase.FirebaseDb
 import kh.edu.rupp.ite.e_shopping.ui.resource.Resource
 

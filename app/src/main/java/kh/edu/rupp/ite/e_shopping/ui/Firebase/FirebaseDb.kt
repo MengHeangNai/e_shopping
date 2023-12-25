@@ -12,10 +12,10 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
-import kh.edu.rupp.ite.e_shopping.api.model.Address
-import kh.edu.rupp.ite.e_shopping.api.model.CartProduct
-import kh.edu.rupp.ite.e_shopping.api.model.Order
-import kh.edu.rupp.ite.e_shopping.api.model.User
+import kh.edu.rupp.ite.e_shopping.ui.model.Address
+import kh.edu.rupp.ite.e_shopping.ui.model.CartProduct
+import kh.edu.rupp.ite.e_shopping.ui.model.Order
+import kh.edu.rupp.ite.e_shopping.ui.model.User
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ADDRESS_COLLECTION
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.BEST_DEALS
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CART_COLLECTION
@@ -23,7 +23,7 @@ import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CATEGORIES_COLLECT
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CATEGORY
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CLOTHES
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.COLOR
-import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CUPBOARD_CATEGORY
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.PANTS_CATEGORY
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ID
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ORDERS
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ORDER_PLACED_STATE
@@ -92,11 +92,11 @@ class FirebaseDb {
 
     //add order by orders
     fun getMostOrderedCupboard(pagingPage: Long) =
-        productsCollection.whereEqualTo(CATEGORY, CUPBOARD_CATEGORY).limit(pagingPage)
+        productsCollection.whereEqualTo(CATEGORY, PANTS_CATEGORY).limit(pagingPage)
             .orderBy(ORDERS, Direction.DESCENDING).limit(pagingPage).get()
 
     fun getCupboards(pagingPage: Long) =
-        productsCollection.whereEqualTo(CATEGORY, CUPBOARD_CATEGORY).limit(pagingPage)
+        productsCollection.whereEqualTo(CATEGORY, PANTS_CATEGORY).limit(pagingPage)
             .limit(pagingPage).get()
 
     fun addProductToCart(product: CartProduct) = userCartCollection?.document()!!.set(product)

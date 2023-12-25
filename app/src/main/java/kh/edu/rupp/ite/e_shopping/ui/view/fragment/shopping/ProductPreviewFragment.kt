@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kleine.adapters.viewpager.ViewPager2Images
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kh.edu.rupp.ite.e_shopping.R
-import kh.edu.rupp.ite.e_shopping.api.model.CartProduct
-import kh.edu.rupp.ite.e_shopping.api.model.Product
+import kh.edu.rupp.ite.e_shopping.ui.model.CartProduct
+import kh.edu.rupp.ite.e_shopping.ui.model.Product
 import kh.edu.rupp.ite.e_shopping.databinding.FragmentProductPreviewBinding
 import kh.edu.rupp.ite.e_shopping.ui.SpacingDecorator.HorizantalSpacingItemDecorator
 import kh.edu.rupp.ite.e_shopping.ui.adapter.recyclerview.ColorsAndSizesAdapter

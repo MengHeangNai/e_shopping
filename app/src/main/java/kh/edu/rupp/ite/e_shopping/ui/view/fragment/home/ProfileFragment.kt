@@ -1,4 +1,4 @@
-package kh.edu.rupp.ite.e_shopping.ui.view.fragment
+package kh.edu.rupp.ite.e_shopping.ui.view.fragment.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,10 +15,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kh.edu.rupp.ite.e_shopping.R
-import kh.edu.rupp.ite.e_shopping.api.model.User
 import kh.edu.rupp.ite.e_shopping.databinding.FragmentProfileBinding
+import kh.edu.rupp.ite.e_shopping.ui.model.User
 import kh.edu.rupp.ite.e_shopping.ui.resource.Resource
-import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.UPDATE_ADDRESS_FLAG
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants
 import kh.edu.rupp.ite.e_shopping.ui.view.activity.MainActivity
 import kh.edu.rupp.ite.e_shopping.ui.view.activity.ShoppingActivity
 import kh.edu.rupp.ite.e_shopping.ui.viewmodel.shopping.ShoppingViewModel
@@ -77,7 +77,7 @@ class ProfileFragment : Fragment() {
     private fun onTrackOrderClick() {
         binding.linearTrackOrder.setOnClickListener {
             val snackBar = requireActivity().findViewById<CoordinatorLayout>(R.id.snackBar_coordinator)
-            Snackbar.make(snackBar,resources.getText(R.string.g_coming_soon), Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(snackBar, resources.getText(R.string.g_coming_soon), Snackbar.LENGTH_SHORT).show()
         }
     }
 
@@ -115,7 +115,7 @@ class ProfileFragment : Fragment() {
                     binding.apply {
                         tvUserName.text = user?.firstName + " " + user?.lastName
                         Glide.with(requireView()).load(user?.imagePath)
-                            .error(R.drawable.ic_default_profile_picture).into(binding.imgUser)
+                            .error(R.drawable.boy).into(binding.imgUser)
                     }
                     return@observe
                 }
@@ -151,7 +151,7 @@ class ProfileFragment : Fragment() {
     private fun onBillingAndAddressesClick() {
         binding.linearBilling.setOnClickListener {
             val bundle = Bundle()
-            bundle.putString("clickFlag", UPDATE_ADDRESS_FLAG)
+            bundle.putString("clickFlag", Constants.UPDATE_ADDRESS_FLAG)
             findNavController().navigate(R.id.action_profileFragment_to_billingFragment, bundle)
         }
     }

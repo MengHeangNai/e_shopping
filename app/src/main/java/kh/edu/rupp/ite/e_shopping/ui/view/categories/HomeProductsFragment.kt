@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kh.edu.rupp.ite.e_shopping.R
-import kh.edu.rupp.ite.e_shopping.api.model.CartProduct
+import kh.edu.rupp.ite.e_shopping.ui.model.CartProduct
 import kh.edu.rupp.ite.e_shopping.databinding.FragmentHomeProductsViewHolderBinding
 import kh.edu.rupp.ite.e_shopping.ui.Firebase.FirebaseDb
 import kh.edu.rupp.ite.e_shopping.ui.adapter.recyclerview.AdsRecyclerAdapter

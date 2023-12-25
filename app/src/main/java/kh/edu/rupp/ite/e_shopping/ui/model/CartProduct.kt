@@ -1,7 +1,4 @@
-package kh.edu.rupp.ite.e_shopping.api.model
-
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+package kh.edu.rupp.ite.e_shopping.ui.model
 
 data class CartProduct (
     val id:Int,

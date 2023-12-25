@@ -6,10 +6,10 @@
     <fragment
             tools:layout="@layout/fragment_home"
             android:id="@+id/homeFragment"
-            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.HomeFragment"
+            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.home.HomeFragment"
             android:label="HomeFragment">
 
-<action
+        <action
                 android:id="@+id/action_homeFragment_to_productPreviewFragment2"
                 app:destination="@id/productPreviewFragment2"
                 app:enterAnim="@anim/nav_default_enter_anim"
@@ -26,7 +26,7 @@
         tools:layout="@layout/fragment_edit_user_information">
         <argument
             android:name="user"
-            app:argType="kh.edu.rupp.ite.e_shopping.api.model.User" />
+            app:argType="kh.edu.rupp.ite.e_shopping.ui.model.User" />
     </fragment>
 
     <fragment
@@ -36,7 +36,7 @@
             tools:layout="@layout/fragment_product_preview">
         <argument
                 android:name="product"
-                app:argType="kh.edu.rupp.ite.e_shopping.api.model.Product" />
+                app:argType="kh.edu.rupp.ite.e_shopping.ui.model.Product" />
 
 
     </fragment>
@@ -44,7 +44,7 @@
     <fragment
             tools:layout="@layout/fragment_cart"
             android:id="@+id/cartFragment"
-            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.CartFragment"
+            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.home.CartFragment"
             android:label="CartFragment">
         <action
                 android:id="@+id/action_cartFragment_to_productPreviewFragment2"
@@ -63,7 +63,7 @@
     <fragment
             tools:layout="@layout/fragment_search"
             android:id="@+id/searchFragment"
-            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.SearchFragment"
+            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.home.SearchFragment"
             android:label="SearchFragment">
         <action android:id="@+id/action_searchFragment_to_productPreviewFragment2"
                 app:destination="@id/productPreviewFragment2"/>
@@ -73,7 +73,7 @@
     <fragment
             tools:layout="@layout/fragment_profile"
             android:id="@+id/profileFragment"
-            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.ProfileFragment"
+            android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.home.ProfileFragment"
             android:label="ProfileFragment">
         <action android:id="@+id/action_profileFragment_to_editUserInformation"
                 app:destination="@id/editUserInformation"/>
@@ -102,7 +102,7 @@
         <argument
             android:name="products"
             android:defaultValue="@null"
-            app:argType="kh.edu.rupp.ite.e_shopping.api.model.CartProductsList"
+            app:argType="kh.edu.rupp.ite.e_shopping.ui.model.CartProductsList"
             app:nullable="true" />
         <action android:id="@+id/action_billingFragment_to_addressFragment" app:destination="@id/addressFragment"/>
         <action android:id="@+id/action_billingFragment_to_orderCompleteFragment"
@@ -114,7 +114,7 @@
         <argument
             android:name="address"
             android:defaultValue="@null"
-            app:argType="kh.edu.rupp.ite.e_shopping.api.model.Address"
+            app:argType="kh.edu.rupp.ite.e_shopping.ui.model.Address"
             app:nullable="true" />
     </fragment>
     <fragment android:id="@+id/orderCompleteFragment" android:name="kh.edu.rupp.ite.e_shopping.ui.view.fragment.shopping.OrderCompleteFragment"
@@ -129,7 +129,7 @@
             app:nullable="true" />
         <argument
             android:name="order"
-            app:argType="kh.edu.rupp.ite.e_shopping.api.model.Order"
+            app:argType="kh.edu.rupp.ite.e_shopping.ui.model.Order"
             app:nullable="true"
             android:defaultValue="@null" />
         <action android:id="@+id/action_orderCompleteFragment_to_orderDetailsFragment"
@@ -139,6 +139,6 @@
               android:label="fragment_order_details" tools:layout="@layout/fragment_order_details">
         <argument
             android:name="order"
-            app:argType="kh.edu.rupp.ite.e_shopping.api.model.Order" />
+            app:argType="kh.edu.rupp.ite.e_shopping.ui.model.Order" />
     </fragment>
 </navigation>

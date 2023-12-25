@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kh.edu.rupp.ite.e_shopping.R
-import kh.edu.rupp.ite.e_shopping.api.model.Order
+import kh.edu.rupp.ite.e_shopping.ui.model.Order
 import kh.edu.rupp.ite.e_shopping.databinding.RecyclerViewAllOrdersItemBinding
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ORDER_CONFIRM_STATE
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ORDER_Delivered_STATE

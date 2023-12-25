@@ -3,15 +3,14 @@ package kh.edu.rupp.ite.e_shopping.ui.viewmodel.shopping
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
 import com.google.firebase.firestore.FirebaseFirestore
-import kh.edu.rupp.ite.e_shopping.api.model.*
 import kh.edu.rupp.ite.e_shopping.ui.Firebase.FirebaseDb
+import kh.edu.rupp.ite.e_shopping.ui.model.*
 import kh.edu.rupp.ite.e_shopping.ui.resource.Resource
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ACCESSORY_CATEGORY
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CLOTHES_CATEGORY
-import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.CUPBOARD_CATEGORY
-import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.TABLES_CATEGORY
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.PANTS_CATEGORY
+import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.SHIRTS_CATEGORY
 import java.util.*
 
 private const val TAG = "ShoppingViewModel"
@@ -27,20 +26,15 @@ class ShoppingViewModel(
 
     val home = MutableLiveData<Resource<List<Product>>>()
 
-    val chairs = MutableLiveData<Resource<List<Product>>>()
-    val mostRequestedChairs = MutableLiveData<Resource<List<Product>>>()
+    val clothe = MutableLiveData<Resource<List<Product>>>()
 
-    val tables = MutableLiveData<Resource<List<Product>>>()
-    val mostRequestedTables = MutableLiveData<Resource<List<Product>>>()
+    val shirts = MutableLiveData<Resource<List<Product>>>()
 
+    val pants = MutableLiveData<Resource<List<Product>>>()
+    
     val accessory = MutableLiveData<Resource<List<Product>>>()
     val mostRequestedAccessories = MutableLiveData<Resource<List<Product>>>()
-
-    val furniture = MutableLiveData<Resource<List<Product>>>()
-    val mostRequestedFurniture = MutableLiveData<Resource<List<Product>>>()
-
-    val mostRequestedCupboard = MutableLiveData<Resource<List<Product>>>()
-    val cupboard = MutableLiveData<Resource<List<Product>>>()
+    
     val addToCart = MutableLiveData<Resource<Boolean>>()
 
     val addAddress = MutableLiveData<Resource<Address>>()
@@ -68,21 +62,12 @@ class ShoppingViewModel(
     private var clothesPaging: Long = 5
     private var bestDealsPaging: Long = 5
 
-    private var cupboardPaging: Long = 4
-    private var mostOrderCupboardPaging: Long = 5
 
-    private var mostRequestedChairsPage: Long = 3
-    private var chairsPage: Long = 4
-
-    private var mostRequestedTablePage: Long = 3
-    private var tablePage: Long = 4
-
+    private var clothePage: Long = 8
+    private var pantsPage: Long = 8
+    private var shirtsPage: Long = 8
     private var mostRequestedAccessoryPage: Long = 3
-    private var accessoryPage: Long = 4
-
-    private var mostRequestedFurniturePage: Long = 3
-    private var furniturePage: Long = 4
-
+    private var accessoryPage: Long = 8
 
     init {
         getClothesProducts()
@@ -123,7 +108,7 @@ class ShoppingViewModel(
         mostRequestedAccessories.postValue(Resource.Loading())
         shouldPaging(ACCESSORY_CATEGORY, size) { shouldPaging ->
             if (shouldPaging) {
-                chairs.postValue(Resource.Loading())
+                clothe.postValue(Resource.Loading())
                 firebaseDatabase.getProductsByCategory(
                     ACCESSORY_CATEGORY,
                     mostRequestedAccessoryPage
@@ -149,108 +134,72 @@ class ShoppingViewModel(
     private var ClothesProducts: List<Product>? = null
     fun getClothes(size: Int = 0) {
         if (ClothesProducts != null && size == 0) {
-            chairs.postValue(Resource.Success(ClothesProducts))
+            clothe.postValue(Resource.Success(ClothesProducts))
             return
         }
-                firebaseDatabase.getProductsByCategory(CLOTHES_CATEGORY, chairsPage)
+                firebaseDatabase.getProductsByCategory(CLOTHES_CATEGORY, clothePage)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             val documents = it.result
                             if (!documents!!.isEmpty) {
                                 val productsList = documents.toObjects(Product::class.java)
                                 ClothesProducts = productsList
-                                chairs.postValue(Resource.Success(productsList))
-                                chairsPage += 4
+                                clothe.postValue(Resource.Success(productsList))
+                                clothePage += 4
 
                             }
                         } else
-                            chairs.postValue(Resource.Error(it.exception.toString()))
+                            clothe.postValue(Resource.Error(it.exception.toString()))
                     }
     }
-
-    private var mostRequestedChairsProducts: List<Product>? = null
-    fun getMostRequestedChairs(size: Int = 0) {
-        if (mostRequestedChairsProducts != null && size == 0) {
-            mostRequestedChairs.postValue(Resource.Success(ClothesProducts))
+    
+    private var shirtsProducts: List<Product>? = null
+    fun getshirts(size: Int = 0) {
+        if (shirtsProducts != null && size == 0) {
+            shirts.postValue(Resource.Success(shirtsProducts))
             return
         }
-        mostRequestedChairs.postValue(Resource.Loading())
-        shouldPaging(CLOTHES_CATEGORY, size) { shouldPaging ->
-            if (shouldPaging) {
-                chairs.postValue(Resource.Loading())
-                firebaseDatabase.getProductsByCategory(CLOTHES_CATEGORY, mostRequestedChairsPage)
+                shirts.postValue(Resource.Loading())
+                firebaseDatabase.getProductsByCategory(SHIRTS_CATEGORY, shirtsPage)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             val documents = it.result
                             if (!documents!!.isEmpty) {
                                 val productsList = documents.toObjects(Product::class.java)
-                                mostRequestedChairsProducts = productsList
-                                mostRequestedChairs.postValue(Resource.Success(productsList))
-                                mostRequestedChairsPage += 4
+                                shirtsProducts = productsList
+                                shirts.postValue(Resource.Success(productsList))
+                                shirtsPage += 4
 
                             }
-                            Log.d("test", "most requested chairs page $mostRequestedChairsPage")
                         } else
-                            mostRequestedChairs.postValue(Resource.Error(it.exception.toString()))
-                        Log.d("test", "most requested chairs page $mostRequestedChairsPage")
+                            shirts.postValue(Resource.Error(it.exception.toString()))
                     }
-            } else
-                chairs.postValue(Resource.Error("Cannot paging"))
-        }
-    }
 
-    private var tablesProducts: List<Product>? = null
-    fun getTables(size: Int = 0) {
-        if (tablesProducts != null && size == 0) {
-            tables.postValue(Resource.Success(tablesProducts))
+        }
+
+
+    private var pantsProduct: List<Product>? = null
+
+    fun  getPants(size: Int = 0) {
+        if (pantsProduct != null && size == 0) {
+            pants.postValue(Resource.Success(pantsProduct))
             return
         }
-                tables.postValue(Resource.Loading())
-                firebaseDatabase.getProductsByCategory(TABLES_CATEGORY, tablePage)
+        pants.postValue(Resource.Loading())
+                firebaseDatabase.getProductsByCategory(PANTS_CATEGORY, pantsPage)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             val documents = it.result
                             if (!documents!!.isEmpty) {
                                 val productsList = documents.toObjects(Product::class.java)
-                                tablesProducts = productsList
-                                tables.postValue(Resource.Success(productsList))
-                                tablePage += 4
+                                pants.postValue(Resource.Success(productsList))
+                                pantsProduct = productsList
+                                pantsPage += 4
 
                             }
                         } else
-                            tables.postValue(Resource.Error(it.exception.toString()))
+                            pants.postValue(Resource.Error(it.exception.toString()))
                     }
-
-        }
-
-
-    private var mostRequestedTablesProducts: List<Product>? = null
-    fun getMostRequestedTables(size: Int = 0) {
-        if (mostRequestedTablesProducts != null && size == 0) {
-            tables.postValue(Resource.Success(mostRequestedTablesProducts))
-            return
-        }
-        mostRequestedTables.postValue(Resource.Loading())
-        shouldPaging(TABLES_CATEGORY, size) { shouldPaging ->
-            if (shouldPaging) {
-                mostRequestedTables.postValue(Resource.Loading())
-                firebaseDatabase.getProductsByCategory(TABLES_CATEGORY, mostRequestedTablePage)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            val documents = it.result
-                            if (!documents!!.isEmpty) {
-                                val productsList = documents.toObjects(Product::class.java)
-                                mostRequestedTablesProducts = productsList
-                                mostRequestedTables.postValue(Resource.Success(productsList))
-                                mostRequestedTablePage += 3
-
-                            }
-                        } else
-                            mostRequestedTables.postValue(Resource.Error(it.exception.toString()))
-                    }
-            } else
-                mostRequestedTables.postValue(Resource.Error("Cannot paging"))
-        }
     }
 
 
@@ -308,62 +257,7 @@ class ShoppingViewModel(
                 home.postValue(Resource.Error("Cannot paging"))
         }
     }
-
-    private var mostRequestedCupboardProducts: List<Product>? = null
-    fun getMostRequestedCupboards(size: Int = 0) {
-        if (mostRequestedCupboardProducts != null && size == 0) {
-            mostRequestedCupboard.postValue(Resource.Success(mostRequestedCupboardProducts))
-            return
-        }
-
-        mostRequestedCupboard.postValue(Resource.Loading())
-        shouldPaging(CUPBOARD_CATEGORY, size) { shouldPaging ->
-            if (shouldPaging) {
-                mostRequestedCupboard.postValue(Resource.Loading())
-                firebaseDatabase.getMostOrderedCupboard(mostOrderCupboardPaging)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            val documents = it.result
-                            if (!documents!!.isEmpty) {
-                                val productsList = documents.toObjects(Product::class.java)
-                                mostRequestedCupboardProducts = productsList
-                                mostRequestedCupboard.postValue(Resource.Success(productsList))
-                                mostOrderCupboardPaging += 5
-
-                            }
-                        } else
-                            mostRequestedCupboard.postValue(Resource.Error(it.exception.toString()))
-                    }
-
-
-            } else
-                mostRequestedCupboard.postValue(Resource.Error("Cannot paging"))
-        }
-    }
-
-    private var dCupboardProducts: List<Product>? = null
-    fun getCupboardProduct(size: Int = 0) {
-        if (dCupboardProducts != null && size == 0) {
-            cupboard.postValue(Resource.Success(dCupboardProducts))
-            return
-        }
-
-                firebaseDatabase.getCupboards(cupboardPaging).addOnCompleteListener {
-                    if (it.isSuccessful) {
-
-                        val documents = it.result
-                        if (!documents!!.isEmpty) {
-                            val productsList = documents.toObjects(Product::class.java)
-                            dCupboardProducts = productsList
-                            cupboard.postValue(Resource.Success(productsList))
-                            cupboardPaging += 10
-                        }
-
-                    } else
-                        cupboard.postValue(Resource.Error(it.exception.toString()))
-                }
-    }
-
+    
     private fun shouldPaging(category: String, listSize: Int, onSuccess: (Boolean) -> Unit) {
         FirebaseFirestore.getInstance()
             .collection("categories")

@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
 import kh.edu.rupp.ite.e_shopping.R
-import kh.edu.rupp.ite.e_shopping.api.model.User
+import kh.edu.rupp.ite.e_shopping.ui.model.User
 import kh.edu.rupp.ite.e_shopping.databinding.FragmentRegisterBinding
 import kh.edu.rupp.ite.e_shopping.ui.resource.Resource
 import kh.edu.rupp.ite.e_shopping.ui.view.activity.MainActivity

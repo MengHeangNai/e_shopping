@@ -106,6 +106,16 @@ class AllOrderFragment : Fragment() {
                     Log.e(TAG, response.message.toString())
                     return@observe
                 }
+
+                else -> {
+                    hideLoading()
+                    Toast.makeText(
+                        activity,
+                        resources.getText(R.string.error_occurred),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.e(TAG, response.message.toString())
+                    return@observe}
             }
         }
     }

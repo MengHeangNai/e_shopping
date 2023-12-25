@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kh.edu.rupp.ite.e_shopping.R
-import kh.edu.rupp.ite.e_shopping.api.model.Address
+import kh.edu.rupp.ite.e_shopping.ui.model.Address
 import kh.edu.rupp.ite.e_shopping.databinding.RecyclerviewShippingItemBinding
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.SELECT_ADDRESS_FLAG
 

@@ -22,8 +22,8 @@ class Constants {
         const val QUANTITY = "quantity"
 
         const val CLOTHES_CATEGORY = "Clothes"
-        const val CUPBOARD_CATEGORY = "Pants"
-        const val TABLES_CATEGORY = "Shirts"
+        const val PANTS_CATEGORY = "Pants"
+        const val SHIRTS_CATEGORY = "Shirts"
         const val ACCESSORY_CATEGORY = "Accessories"
 
         const val ORDERS = "orders"

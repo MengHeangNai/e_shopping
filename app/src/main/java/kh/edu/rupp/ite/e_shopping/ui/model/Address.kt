@@ -1,5 +1,5 @@
 
-package kh.edu.rupp.ite.e_shopping.api.model
+package kh.edu.rupp.ite.e_shopping.ui.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

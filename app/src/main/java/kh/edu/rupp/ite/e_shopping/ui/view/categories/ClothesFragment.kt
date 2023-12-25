@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -48,10 +47,6 @@ class ClothesFragment : Fragment() {
         setupProductsRecyclerView()
         observeProducts()
 
-        productsPaging()
-
-
-
         productsAdapter.onItemClick = { product ->
             val bundle = Bundle()
             bundle.putParcelable("product",product)
@@ -61,16 +56,8 @@ class ClothesFragment : Fragment() {
         }
     }
 
-    private fun productsPaging() {
-        binding.scrollCupboard.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            if (v!!.getChildAt(0).bottom <= (v.height + scrollY)) {
-                viewModel.getClothes(productsAdapter.differ.currentList.size)
-            }
-        })
-    }
-
     private fun observeProducts() {
-        viewModel.chairs.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.clothe.observe(viewLifecycleOwner, Observer { response ->
 
             when (response) {
                 is Resource.Loading -> {

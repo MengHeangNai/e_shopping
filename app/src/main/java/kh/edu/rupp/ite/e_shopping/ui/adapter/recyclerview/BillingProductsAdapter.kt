@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kh.edu.rupp.ite.e_shopping.api.model.CartProduct
+import kh.edu.rupp.ite.e_shopping.ui.model.CartProduct
 import kh.edu.rupp.ite.e_shopping.databinding.CartItemBinding
 
 class BillingProductsAdapter(): RecyclerView.Adapter<BillingProductsAdapter.BillingProductsAdapterViewHolder>() {

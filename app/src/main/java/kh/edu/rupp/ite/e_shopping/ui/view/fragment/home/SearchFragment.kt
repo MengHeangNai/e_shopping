@@ -1,4 +1,4 @@
-package kh.edu.rupp.ite.e_shopping.ui.view.fragment
+package kh.edu.rupp.ite.e_shopping.ui.view.fragment.home
 
 import android.content.Context
 import android.os.Bundle

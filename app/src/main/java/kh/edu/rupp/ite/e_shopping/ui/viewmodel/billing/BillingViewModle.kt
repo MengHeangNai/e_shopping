@@ -1,10 +1,10 @@
 package  kh.edu.rupp.ite.e_shopping.ui.viewmodel.billing
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kh.edu.rupp.ite.e_shopping.api.model.Address
-import kh.edu.rupp.ite.e_shopping.api.model.CartProduct
+import kh.edu.rupp.ite.e_shopping.ui.model.Address
+import kh.edu.rupp.ite.e_shopping.ui.model.CartProduct
 
-import kh.edu.rupp.ite.e_shopping.api.model.Order
+import kh.edu.rupp.ite.e_shopping.ui.model.Order
 import kh.edu.rupp.ite.e_shopping.ui.Firebase.FirebaseDb
 import kh.edu.rupp.ite.e_shopping.ui.resource.Resource
 import kh.edu.rupp.ite.e_shopping.ui.util.Constants.Companion.ORDER_PLACED_STATE
