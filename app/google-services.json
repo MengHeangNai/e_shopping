@@ -1,42 +1,78 @@
 {
   "project_info": {
-    "project_number": "279839523980",
-    "project_id": "eshopping-17404",
-    "storage_bucket": "eshopping-17404.appspot.com"
+    "project_number": "937091427198",
+    "firebase_url": "https://auxswotsystem-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "auxswotsystem",
+    "storage_bucket": "auxswotsystem.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:279839523980:android:24229a536c3a681a05e7a9",
+        "mobilesdk_app_id": "1:937091427198:android:2690744ac0c3f83f15e12f",
         "android_client_info": {
-          "package_name": "kh.edu.rupp.ite.e_shopping"
+          "package_name": "com.auxswotsystem"
         }
       },
       "oauth_client": [
         {
-          "client_id": "279839523980-hn5qnbd1kskc6mfe590814n7408fjcvo.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "kh.edu.rupp.ite.e_shopping",
-            "certificate_hash": "e73998fa79ee37410dd433a9dc2aa09bd4fd9543"
-          }
-        },
-        {
-          "client_id": "279839523980-1lpbrhktq3imkns5d51tna4hjdgk5ges.apps.googleusercontent.com",
+          "client_id": "937091427198-n7mamc6ng31ut3r18c1t2rn5jln5f8ue.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBXfRsAT9LMN4H2ILtBBWij0DWzZ2tDOME"
+          "current_key": "AIzaSyCBtiCsP0D-TVfdOsJ4Y-MLSr5Azj7qspU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "279839523980-1lpbrhktq3imkns5d51tna4hjdgk5ges.apps.googleusercontent.com",
+              "client_id": "937091427198-n7mamc6ng31ut3r18c1t2rn5jln5f8ue.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "937091427198-gmqgl8jtnnnf22rvur27v5nkvus17i9d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.AuxswotSystem"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937091427198:android:d53de3d521925e4215e12f",
+        "android_client_info": {
+          "package_name": "kh.edu.rupp.ite.e_shopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937091427198-n7mamc6ng31ut3r18c1t2rn5jln5f8ue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBtiCsP0D-TVfdOsJ4Y-MLSr5Azj7qspU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937091427198-n7mamc6ng31ut3r18c1t2rn5jln5f8ue.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "937091427198-gmqgl8jtnnnf22rvur27v5nkvus17i9d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.AuxswotSystem"
+              }
             }
           ]
         }
